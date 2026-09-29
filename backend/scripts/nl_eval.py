@@ -61,9 +61,10 @@ def main() -> None:
             errors = compare(result.request, case["expect"])
             times.append(result.seconds)
             parsed = json.loads(result.request.model_dump_json(exclude_none=True))
+            raw = result.raw.model_dump(exclude_defaults=True)
             attempts, secs = result.attempts, result.seconds
         except ParseError as exc:
-            errors, parsed, attempts, secs = [str(exc)], None, 2, 0.0
+            errors, parsed, raw, attempts, secs = [str(exc)], None, None, 2, 0.0
 
         ok = not errors
         passed += ok
@@ -71,9 +72,10 @@ def main() -> None:
         for err in errors:
             print(f"        - {err}")
         if args.verbose and parsed:
-            print("        " + json.dumps(parsed, ensure_ascii=False))
+            print("        model said: " + json.dumps(raw, ensure_ascii=False))
+            print("        resolved:   " + json.dumps(parsed, ensure_ascii=False))
         rows.append({"id": case["id"], "pass": ok, "errors": errors, "seconds": round(secs, 2),
-                     "attempts": attempts, "parsed": parsed})
+                     "attempts": attempts, "model_output": raw, "parsed": parsed})
 
     total = len(cases)
     median = statistics.median(times) if times else 0

@@ -171,3 +171,39 @@ def test_parser_gives_up_after_two_failures():
 def test_schema_sent_to_ollama_is_valid_json_schema():
     schema = RawParse.model_json_schema()
     assert schema["type"] == "object" and "depart_month" in schema["properties"]
+
+
+# --- regressions from the first qwen2.5:32b run (15/20) --------------------------
+
+@pytest.mark.parametrize("written, code", [
+    ("Plattsburgh", "PBG"), ("Plattsburgh, NY", "PBG"), ("Boston Logan", "BOS"),
+    ("Montréal-Trudeau", "YUL"), ("Montréal Saint-Hubert", "YHU"), ("Quebec City", "YQB"),
+    ("Burlington, VT", "BTV"), ("Toronto Pearson", "YYZ"), ("btv", "BTV"),
+])
+def test_written_airport_names_map_to_codes(written, code):
+    assert normalize_airports([written])[0] == [code]
+
+
+def test_return_day_without_month_uses_departure_month():
+    # "aller le 5 février 2027 et retour le 9"
+    _, _, nights = resolve_dates(RawParse(depart_month=2, depart_day=5, depart_year=2027, return_day=9), TODAY)
+    assert nights == 4
+
+
+def test_return_day_earlier_than_departure_rolls_to_next_month():
+    # "leaving January 28, back on the 3rd"
+    _, _, nights = resolve_dates(RawParse(depart_month=1, depart_day=28, return_day=3), TODAY)
+    assert nights == 6
+
+
+def test_prompt_examples_are_valid_and_do_not_leak_test_cases():
+    from app.nl_search.prompts import SYSTEM_PROMPT
+    examples = [line for line in SYSTEM_PROMPT.split("EXAMPLES", 1)[1].split("\n\n")
+                if line.strip().startswith("Request:")]
+    assert len(examples) == 3
+    for block in examples:
+        request_line, json_text = block.strip().split("\n", 1)
+        RawParse.model_validate(json.loads(json_text))         # valid against the schema
+        for case in SUITE["cases"]:
+            for place in case["expect"].get("destinations", []):
+                assert place.lower() not in block.lower(), f"example reuses test destination {place}"

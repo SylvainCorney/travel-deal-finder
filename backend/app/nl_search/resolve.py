@@ -43,11 +43,17 @@ def _fold(text: str) -> str:
 
 
 def normalize_airports(values: list[str]) -> tuple[list[str], list[str]]:
-    """Return (known codes, warnings). Order preserved, duplicates removed."""
+    """Map what the traveller wrote ("Montréal", "Boston Logan", "PBG") to codes.
+
+    Returns (known codes, warnings). Order preserved, duplicates removed.
+    Longer names are tried first so "Montréal Saint-Hubert" maps to YHU, not YUL.
+    """
+    names = sorted(_CITY_TO_CODE, key=len, reverse=True)
     codes, warnings = [], []
     for value in values:
         key = value.strip().upper()
-        code = key if key in AIRPORTS else _CITY_TO_CODE.get(_fold(value).split(",")[0].strip())
+        folded = _fold(value)
+        code = key if key in AIRPORTS else next((_CITY_TO_CODE[n] for n in names if n in folded), None)
         if code is None:
             warnings.append(f"Unknown departure airport '{value}' ignored")
         elif code not in codes:
@@ -103,8 +109,12 @@ def resolve_dates(raw: RawParse, today: date) -> tuple[date | None, date | None,
         earliest = latest = start
 
     nights_from_return = None
-    if raw.return_month is not None and raw.return_day is not None and not month_only:
-        ret = _on_or_after(raw.return_month, raw.return_day, start)
+    if raw.return_day is not None and not month_only:
+        # "retour le 9" with no month = same month as departure (or the next one if the day is earlier)
+        ret_month = raw.return_month
+        if ret_month is None:
+            ret_month = start.month if raw.return_day >= start.day else start.month % 12 + 1
+        ret = _on_or_after(ret_month, raw.return_day, start)
         nights_from_return = (ret - start).days or None
 
     return earliest, latest, nights_from_return
