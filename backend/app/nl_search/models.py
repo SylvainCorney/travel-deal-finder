@@ -17,16 +17,23 @@ TripType = Literal["all_inclusive", "flight_hotel", "flight_only", "hotel_only"]
 
 
 class RawParse(BaseModel):
-    """LLM output. Mirrors the JSON schema sent to Ollama."""
+    """LLM output. Mirrors the JSON schema sent to Ollama.
+
+    Field ORDER matters: with a JSON schema, Ollama writes fields in this order, so
+    it follows how people describe a trip (what, who, from, to, when, extras).
+    """
+
+    language: Literal["en", "fr"] = "en"
+    trip_type: TripType | None = None
 
     # Who
     adults: int | None = Field(None, ge=1, le=12)
     children_ages: list[int] = Field(default_factory=list)
     adults_only_resort: bool | None = None
 
-    # Where
+    # From / to
+    origin_airports: list[str] = Field(default_factory=list)  # as written; resolve.py maps to codes
     destinations: list[str] = Field(default_factory=list)
-    origin_airports: list[str] = Field(default_factory=list)  # codes or city names
     max_drive_hours: float | None = Field(None, ge=0, le=24)
 
     # When - raw parts only; Python resolves them into real dates
@@ -35,22 +42,26 @@ class RawParse(BaseModel):
     depart_year: int | None = None
     window_end_month: int | None = Field(None, ge=1, le=12)
     window_end_day: int | None = Field(None, ge=1, le=31)
+    flex_days: int | None = Field(None, ge=0, le=30)
     return_month: int | None = Field(None, ge=1, le=12)
     return_day: int | None = Field(None, ge=1, le=31)
-    flex_days: int | None = Field(None, ge=0, le=30)
     nights_min: int | None = Field(None, ge=1, le=60)
     nights_max: int | None = Field(None, ge=1, le=60)
 
-    # What
-    trip_type: TripType | None = None
+    # Extras
     min_stars: float | None = Field(None, ge=1, le=5)
     direct_flight_only: bool | None = None
     budget_amount: float | None = Field(None, gt=0)
     budget_per_person: bool | None = None
-
-    # Soft
     preferences: list[str] = Field(default_factory=list)
-    language: Literal["en", "fr"] = "en"
+
+    @classmethod
+    def llm_schema(cls) -> dict:
+        """Schema sent to Ollama: EVERY field is required (null allowed), so the model
+        cannot skip a field; it must write each one, in order, even if only null."""
+        schema = cls.model_json_schema()
+        schema["required"] = list(schema["properties"])
+        return schema
 
 
 class SearchRequest(BaseModel):

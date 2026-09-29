@@ -63,7 +63,7 @@ def parse_request(text: str, client: LLMClient | None = None, today: date | None
     """Parse one request. Retries once, feeding the validation error back to the model."""
     client = client or OllamaClient()
     today = today or date.today()
-    schema = RawParse.model_json_schema()
+    schema = RawParse.llm_schema()
 
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},

@@ -207,3 +207,31 @@ def test_prompt_examples_are_valid_and_do_not_leak_test_cases():
         for case in SUITE["cases"]:
             for place in case["expect"].get("destinations", []):
                 assert place.lower() not in block.lower(), f"example reuses test destination {place}"
+
+
+# --- regression from the second run (5/20): field order under constrained decoding --
+
+def test_llm_schema_requires_every_field():
+    schema = RawParse.llm_schema()
+    assert schema["required"] == list(schema["properties"])
+
+
+def test_prompt_examples_follow_schema_field_order():
+    from app.nl_search.prompts import EXAMPLES, SYSTEM_PROMPT
+    order = list(RawParse.llm_schema()["properties"])
+    for text, parsed in EXAMPLES:
+        rendered = parsed.model_dump_json()
+        assert rendered in SYSTEM_PROMPT
+        assert list(json.loads(rendered)) == order, "example keys must be in schema order"
+
+
+def test_parser_sends_the_all_required_schema():
+    seen = {}
+
+    class Spy(FakeClient):
+        def chat(self, messages, schema):
+            seen["schema"] = schema
+            return super().chat(messages, schema)
+
+    parse_request("x y z", client=Spy([json.dumps(IDEAL_RAW["en04"])]), today=TODAY, home_location=HOME)
+    assert seen["schema"]["required"] == list(seen["schema"]["properties"])
