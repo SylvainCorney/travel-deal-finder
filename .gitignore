@@ -15,3 +15,6 @@ node_modules/
 *.db
 *.sqlite
 .env
+
+nl_eval_results/
+.pytest_cache/

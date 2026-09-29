@@ -26,6 +26,19 @@ export const searchAPI = {
   },
 };
 
+export const nlSearchAPI = {
+  // Plain-language request -> structured criteria (local AI model; can take 5-30 s)
+  parse: async (text) => {
+    const response = await api.post('/nl-search/parse', { text }, { timeout: 120000 });
+    return response.data;
+  },
+
+  status: async () => {
+    const response = await api.get('/nl-search/status');
+    return response.data;
+  },
+};
+
 export const dealsAPI = {
   getDeals: async (params = {}) => {
     const queryParams = new URLSearchParams(params).toString();

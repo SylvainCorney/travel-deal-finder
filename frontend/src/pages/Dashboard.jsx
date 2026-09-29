@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Sparkles, TrendingDown } from 'lucide-react';
 import SearchForm from '../components/SearchForm';
+import NaturalSearch from '../components/NaturalSearch';
 import DealsTable from '../components/DealsTable';
 import PriceAlerts from '../components/PriceAlerts';  // Add this
 import { Bell, Search } from 'lucide-react';  // Add icons
@@ -86,6 +87,8 @@ export default function Dashboard() {
         </header>
 
         <div className="space-y-8">
+          <NaturalSearch onSearch={handleSearch} isLoading={isLoading} />
+
           <SearchForm onSearch={handleSearch} isLoading={isLoading} />
 
           {error && (

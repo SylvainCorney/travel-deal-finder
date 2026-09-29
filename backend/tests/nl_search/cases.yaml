@@ -1,0 +1,267 @@
+# Phase 1 evaluation set — 10 English + 10 French requests.
+# "today" is fixed so date expectations never change.
+# Only the fields listed under "expect" are checked. Matching rules:
+#   scalars / dates      exact match (dates as YYYY-MM-DD, or null)
+#   destinations         every expected name appears in the parsed list (accents/case ignored)
+#   origin_airports      same set of codes
+#   preferences_contains every keyword appears somewhere in the parsed preferences
+#   missing              same set as SearchRequest.missing_fields()
+# Pass mark for Phase 1: 18 / 20.
+
+today: "2026-09-29"
+home_location: "Bromont, QC"
+
+cases:
+  # ---------------------------------------------------------------- English
+  - id: en01
+    text: "Adults-only 4.5 star all-inclusive, direct flight, 7 nights sometime in February, under $3,000 for two"
+    expect:
+      adults: 2
+      adults_only_resort: true
+      trip_type: all_inclusive
+      min_stars: 4.5
+      direct_flight_only: true
+      depart_earliest: "2027-02-01"
+      depart_latest: "2027-02-28"
+      nights_min: 7
+      nights_max: 7
+      max_budget_total_cad: 3000
+      language: en
+
+  - id: en02
+    text: "Cheapest flight only from Burlington or Boston to Dallas, leaving March 12 2027, coming back March 19"
+    expect:
+      trip_type: flight_only
+      origin_airports: [BTV, BOS]
+      destinations: [Dallas]
+      depart_earliest: "2027-03-12"
+      depart_latest: "2027-03-12"
+      nights_min: 7
+      nights_max: 7
+
+  - id: en03
+    text: "Family of 4, kids aged 6 and 9, all inclusive in Punta Cana, about a week in the first two weeks of March, max $6000 total"
+    expect:
+      adults: 2
+      children_ages: [6, 9]
+      trip_type: all_inclusive
+      destinations: [Punta Cana]
+      depart_earliest: "2027-03-01"
+      depart_latest: "2027-03-14"
+      nights_min: 6
+      nights_max: 8
+      max_budget_total_cad: 6000
+
+  - id: en04
+    text: "Hotel only in Cancun, 5 stars, 4 nights from January 15"
+    expect:
+      trip_type: hotel_only
+      destinations: [Cancun]
+      min_stars: 5
+      depart_earliest: "2027-01-15"
+      depart_latest: "2027-01-15"
+      nights_min: 4
+      nights_max: 4
+
+  - id: en05
+    text: "My wife and I want a quiet all-inclusive resort with a nice beach in Mexico, 10 to 14 nights in January, 4 stars minimum"
+    expect:
+      adults: 2
+      trip_type: all_inclusive
+      destinations: [Mexico]
+      min_stars: 4
+      depart_earliest: "2027-01-01"
+      depart_latest: "2027-01-31"
+      nights_min: 10
+      nights_max: 14
+      preferences_contains: [quiet, beach]
+
+  - id: en06
+    text: "Flight + hotel to Orlando for 3 adults, 7 nights, leaving December 20 give or take 3 days, direct only"
+    expect:
+      adults: 3
+      trip_type: flight_hotel
+      destinations: [Orlando]
+      direct_flight_only: true
+      depart_earliest: "2026-12-17"
+      depart_latest: "2026-12-23"
+      nights_min: 7
+      nights_max: 7
+
+  - id: en07
+    text: "Any Caribbean all-inclusive, adults only, one week in November, $1,500 per person max for the two of us"
+    expect:
+      adults: 2
+      adults_only_resort: true
+      trip_type: all_inclusive
+      destinations: [Caribbean]
+      depart_earliest: "2026-11-01"
+      depart_latest: "2026-11-30"
+      nights_min: 7
+      nights_max: 7
+      max_budget_total_cad: 3000
+
+  - id: en08
+    text: "Fly from Toronto to Cuba, all inclusive, 2 weeks in April, 4.5 stars, I can drive up to 6 hours"
+    expect:
+      trip_type: all_inclusive
+      origin_airports: [YYZ]
+      destinations: [Cuba]
+      min_stars: 4.5
+      depart_earliest: "2027-04-01"
+      depart_latest: "2027-04-30"
+      nights_min: 14
+      nights_max: 14
+      max_drive_hours: 6
+
+  - id: en09
+    text: "Looking for a trip somewhere warm"
+    expect:
+      depart_earliest: null
+      nights_min: null
+      trip_type: null
+      max_budget_total_cad: null
+      missing: [dates, nights, trip_type]
+
+  - id: en10
+    text: "Direct flight from Montreal to Paris, 10 nights starting May 3 2027, for 2 adults and a 12-year-old"
+    expect:
+      adults: 2
+      children_ages: [12]
+      trip_type: flight_only
+      origin_airports: [YUL]
+      destinations: [Paris]
+      direct_flight_only: true
+      depart_earliest: "2027-05-03"
+      depart_latest: "2027-05-03"
+      nights_min: 10
+      nights_max: 10
+
+  # ---------------------------------------------------------------- Français
+  - id: fr01
+    text: "Tout-inclus pour adultes seulement, 4,5 étoiles, vol direct, 7 nuits en février, moins de 3000 $ pour deux"
+    expect:
+      adults: 2
+      adults_only_resort: true
+      trip_type: all_inclusive
+      min_stars: 4.5
+      direct_flight_only: true
+      depart_earliest: "2027-02-01"
+      depart_latest: "2027-02-28"
+      nights_min: 7
+      nights_max: 7
+      max_budget_total_cad: 3000
+      language: fr
+
+  - id: fr02
+    text: "Vol seulement de Plattsburgh vers Fort Lauderdale, départ le 8 janvier 2027, retour le 15 janvier"
+    expect:
+      trip_type: flight_only
+      origin_airports: [PBG]
+      destinations: [Fort Lauderdale]
+      depart_earliest: "2027-01-08"
+      depart_latest: "2027-01-08"
+      nights_min: 7
+      nights_max: 7
+      language: fr
+
+  - id: fr03
+    text: "Famille de 4 avec deux enfants de 5 et 8 ans, tout inclus à Varadero, environ une semaine, départ entre le 1er et le 10 mars"
+    expect:
+      adults: 2
+      children_ages: [5, 8]
+      trip_type: all_inclusive
+      destinations: [Varadero]
+      depart_earliest: "2027-03-01"
+      depart_latest: "2027-03-10"
+      nights_min: 6
+      nights_max: 8
+      language: fr
+
+  - id: fr04
+    text: "Hôtel seulement à Montego Bay, 5 étoiles, 5 nuits à partir du 20 décembre"
+    expect:
+      trip_type: hotel_only
+      destinations: [Montego Bay]
+      min_stars: 5
+      depart_earliest: "2026-12-20"
+      depart_latest: "2026-12-20"
+      nights_min: 5
+      nights_max: 5
+      language: fr
+
+  - id: fr05
+    text: "Un resort tranquille avec une belle plage au Mexique, tout inclus, 10 à 14 nuits en janvier, minimum 4 étoiles, pour ma conjointe et moi"
+    expect:
+      adults: 2
+      trip_type: all_inclusive
+      destinations: [Mexique]
+      min_stars: 4
+      depart_earliest: "2027-01-01"
+      depart_latest: "2027-01-31"
+      nights_min: 10
+      nights_max: 14
+      preferences_contains: [tranquille, plage]
+      language: fr
+
+  - id: fr06
+    text: "Vol + hôtel à New York pour 3 adultes, 4 nuits, départ le 10 octobre plus ou moins 2 jours"
+    expect:
+      adults: 3
+      trip_type: flight_hotel
+      destinations: [New York]
+      depart_earliest: "2026-10-08"
+      depart_latest: "2026-10-12"
+      nights_min: 4
+      nights_max: 4
+      language: fr
+
+  - id: fr07
+    text: "N'importe où dans les Caraïbes, tout inclus, adultes seulement, une semaine en novembre, 1500 $ max par personne pour nous deux"
+    expect:
+      adults: 2
+      adults_only_resort: true
+      trip_type: all_inclusive
+      destinations: [Caraibes]
+      depart_earliest: "2026-11-01"
+      depart_latest: "2026-11-30"
+      nights_min: 7
+      nights_max: 7
+      max_budget_total_cad: 3000
+      language: fr
+
+  - id: fr08
+    text: "Partir de Boston vers Dallas en vol direct, aller le 5 février 2027 et retour le 9 février"
+    expect:
+      trip_type: flight_only
+      origin_airports: [BOS]
+      destinations: [Dallas]
+      direct_flight_only: true
+      depart_earliest: "2027-02-05"
+      depart_latest: "2027-02-05"
+      nights_min: 4
+      nights_max: 4
+      language: fr
+
+  - id: fr09
+    text: "Je veux partir au chaud"
+    expect:
+      depart_earliest: null
+      nights_min: null
+      trip_type: null
+      max_budget_total_cad: null
+      missing: [dates, nights, trip_type]
+      language: fr
+
+  - id: fr10
+    text: "Tout inclus à Punta Cana, 2 semaines en avril, départ de Burlington ou Montréal, je peux conduire jusqu'à 3 heures"
+    expect:
+      trip_type: all_inclusive
+      origin_airports: [BTV, YUL]
+      destinations: [Punta Cana]
+      depart_earliest: "2027-04-01"
+      depart_latest: "2027-04-30"
+      nights_min: 14
+      nights_max: 14
+      max_drive_hours: 3
+      language: fr

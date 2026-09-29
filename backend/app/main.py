@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.core.config import settings
-from app.api.routes import search, deals, export, alerts
+from app.api.routes import search, deals, export, alerts, nl_search
 from app.database.init_db import init_db
 import traceback
 
@@ -36,7 +36,7 @@ app.include_router(search.router, prefix=f"{settings.API_V1_STR}/search", tags=[
 app.include_router(deals.router, prefix=f"{settings.API_V1_STR}/deals", tags=["deals"])
 app.include_router(export.router, prefix=f"{settings.API_V1_STR}/export", tags=["export"])
 app.include_router(alerts.router, prefix="/api/v1/alerts", tags=["alerts"])
-app.include_router(alerts.router, prefix="/api/v1/alerts", tags=["alerts"]) 
+app.include_router(nl_search.router, prefix=f"{settings.API_V1_STR}/nl-search", tags=["nl-search"])
 
 @app.on_event("startup")
 async def startup_event():
