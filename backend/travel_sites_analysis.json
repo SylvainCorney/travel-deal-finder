@@ -1,0 +1,553 @@
+{
+  "sunwing": {
+    "url": "https://www.sunwing.ca/",
+    "analyzed_at": "2026-01-29T17:44:26.739513",
+    "homepage": {
+      "status": 200,
+      "title": "Sunwing Vacations - Book Your Next Vacation Today | Sunwing.ca",
+      "url": "https://www.sunwing.ca/en/",
+      "has_redirect": true
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": false,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": []
+    },
+    "api_calls": [
+      {
+        "url": "https://fonts.googleapis.com/css?family=PT+Sans:400,700",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://ixfd2-api.bc0a.com/api/ixf/1.0.0/get_capsule/f00000000087274/01655517390?client=js_sdk&client_version=1.5.14",
+        "method": "GET",
+        "type": "xhr"
+      },
+      {
+        "url": "https://assets.sunwingtravelgroup.com/image/upload/c_lfill%2Cg_auto,q_auto,f_auto,w_751,h_422/sunwing-prod/HotelImages/CCCMFB/16x9/001",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://assets.sunwingtravelgroup.com/image/upload/c_lfill%2Cg_auto,q_auto,f_auto,w_751,h_422/sunwing-prod/HotelImages/CYOSOP/16x9/001",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://assets.sunwingtravelgroup.com/image/upload/c_lfill%2Cg_auto,q_auto,f_auto,w_751,h_422/sunwing-prod/HotelImages/HOGHTD/16x9/001",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://assets.sunwingtravelgroup.com/image/upload/c_lfill%2Cg_auto,q_auto,f_auto,w_751,h_422/sunwing-prod/HotelImages/VRAGMV/16x9/001",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://assets.sunwingtravelgroup.com/image/upload/c_lfill%2Cg_auto,q_auto,f_auto,w_751,h_422/sunwing-prod/HotelImages/VRAOVE/16x9/001",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://assets.sunwingtravelgroup.com/image/upload/c_lfill%2Cg_auto,q_auto,f_auto,w_751,h_422/sunwing-prod/HotelImages/FPO6VW/16x9/001",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://capi.connatix.com/us/pixel?pId=32&puId=-BKS4vRJR8qZ4vh48jqXOg&callback=https%3A%2F%2Fs.amazon-adsystem.com%2Fecm3%3Fex%3DconnatixHMT%26id%3D%7BpuId%7D",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://crb.kargo.com/api/v1/dsync/amazon?exid=_CP126h1TTm0bcGXW_N7XQ&r=https://s.amazon-adsystem.com/ecm3?ex=KargoHMT&id=",
+        "method": "GET",
+        "type": "image"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "airtransat": {
+    "url": "https://www.airtransat.com/en-CA",
+    "analyzed_at": "2026-01-29T17:44:34.662671",
+    "homepage": {
+      "status": 200,
+      "title": "Air Transat - Flights to Europe, USA and Sun Destinations",
+      "url": "https://www.airtransat.com/en-CA?search=flight&flightType=RT&gateway=AIRPORT_YUL&pax=1-0-0-0-0",
+      "has_redirect": true
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": false,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": [
+        {
+          "type": "search_button",
+          "selector": "button:has-text(\"Search\")"
+        }
+      ],
+      "has_search_button_input": true
+    },
+    "api_calls": [
+      {
+        "url": "https://airtransatcommedia.blob.core.windows.net/tswcm/media/tsca/skin/img/infovoyageurs_icons/in-flight_service/in-flight_services.svg?ext=.svg",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://airtransatcommedia.blob.core.windows.net/tswcm/media/tsca/widgets/icons/flight_status.svg",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://www.airtransat.com/getmedia/710d26f2-aed0-49bd-a037-7aa52d82fe3f/new-flights-and-new-destinations-to-discover-cta-980x140-jan-2026.jpg.aspx",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://api.airtransat.com/en-CA/Services/FlightRoutes/GetAirports?source=booking-engine&enabled=true",
+        "method": "GET",
+        "type": "xhr"
+      },
+      {
+        "url": "https://api.airtransat.com/en-CA/Services/FlightRoutes/GetRoutesByType?source=booking-engine&available=true&codeshare=true&connectair=true&trains=true",
+        "method": "GET",
+        "type": "xhr"
+      },
+      {
+        "url": "https://api.airtransat.com/en-CA/Services/Campaign/GetFlights?code=sudhiver&itineraryTypes=RT&gateways=YUL%2cYQB%2cYOW&fallbackGateways=1&TilesNbr=6",
+        "method": "GET",
+        "type": "xhr"
+      },
+      {
+        "url": "https://api.airtransat.com/en-CA/Services/Campaign/GetFlights?code=europecdgspring&fromAirportCode=YUL&toAirportCode=CDG&itineraryTypes=RT&gateways=YUL%2cYQB%2cYOW&fallbackGateways=1",
+        "method": "GET",
+        "type": "xhr"
+      },
+      {
+        "url": "https://api.airtransat.com/en-CA/Services/Campaign/GetFlightAirports?format=json&code=Vedettes-HP&itineraryTypes=RT&flightTypes=DVF&tilesNbr=3",
+        "method": "GET",
+        "type": "xhr"
+      },
+      {
+        "url": "https://api.transat.com/staticcontent/raclettejs-page.html",
+        "method": "GET",
+        "type": "document"
+      },
+      {
+        "url": "https://api.airtransat.com/en-CA/Services/FlightRoutes/GetAirports?source=airport-service&enabled=true",
+        "method": "GET",
+        "type": "xhr"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\ud83c\udfaf Found 1 JSON API calls - highly recommended approach",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "tripvoyage": {
+    "url": "https://www.tripvoyage.ca/",
+    "analyzed_at": "2026-01-29T17:44:41.726224",
+    "homepage": {
+      "status": 200,
+      "title": "tripvoyage.ca \u2122 - L\u2019art de r\u00e9server vos voyages avec brio",
+      "url": "https://www.tripvoyage.ca/",
+      "has_redirect": false
+    },
+    "search_analysis": {
+      "has_origin_input": true,
+      "has_destination_input": true,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": [
+        {
+          "type": "origin",
+          "selector": "#origin"
+        },
+        {
+          "type": "destination",
+          "selector": "input[name*=\"destination\"]"
+        },
+        {
+          "type": "date",
+          "selector": "input[name*=\"date\"]"
+        },
+        {
+          "type": "search_button",
+          "selector": "button[type=\"submit\"]"
+        }
+      ],
+      "has_date_input": true,
+      "has_search_button_input": true
+    },
+    "api_calls": [
+      {
+        "url": "https://media.tripcentral.ca/style/datepicker/V1/main-flight-search.css",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://media.tripcentral.ca/js/datepicker/landing-flight-search.js",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyCSUoW39HECxALgF9KLc03YVhzY03GYe6k",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://media.tripcentral.ca/style/responsive/img/package-landing/matchmaker-logo-welcome.png",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://media.tripcentral.ca/style/responsive/img/package-landing/diagram.jpg",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://www.google.com/recaptcha/api.js?render=6LcgIZ8oAAAAACxm8t5jwBbTTJb5Gvng18hACAK4",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://fonts.googleapis.com/icon?family=Material+Icons",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://www.tripvoyage.ca/media/00_13_15_atlantis-hotel-on-paradise-island-in-nassau-bahamas.jpg",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://www.tripvoyage.ca/media/00_0D_L3_TLS-Historic-building-in-the-center-of-Toulouse-near-the-garonne-river-Hotel-Dieu-Saint-Jacques-former-16th-and-17th-century-hospital-on-the-banks-of-the-Garonne-small.jpg",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://www.tripvoyage.ca/js/datepicker/landing-flight-search-full.js",
+        "method": "GET",
+        "type": "script"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "voyagesarabais": {
+    "url": "https://voyagesarabais.com/",
+    "analyzed_at": "2026-01-29T17:44:50.614073",
+    "homepage": {
+      "status": 200,
+      "title": "La meilleure agence de voyages | Voyages \u00e0 Rabais\u00ae",
+      "url": "https://voyagesarabais.com/",
+      "has_redirect": false
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": true,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": [
+        {
+          "type": "destination",
+          "selector": "input[placeholder*=\"To\"]"
+        },
+        {
+          "type": "date",
+          "selector": "input[name*=\"date\"]"
+        },
+        {
+          "type": "search_button",
+          "selector": "button[type=\"submit\"]"
+        }
+      ],
+      "has_date_input": true,
+      "has_search_button_input": true
+    },
+    "api_calls": [
+      {
+        "url": "https://fonts.googleapis.com/css?family=Pacifico",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://voyagesarabais.com/css/modules/search.css?1769625632",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://voyagesarabais.com/css/elements/search_module.css?1769625632",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://voyagesarabais.com/css/elements/flight-card.css?1769625632",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://www.google.com/recaptcha/api.js?hl=fr&render=6LfRg_wUAAAAAEnm2lLlRrcx0mmP4z0ndVpMUjT8",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://challenges.cloudflare.com/turnstile/v0/api.js",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://voyagesarabais.com/img/icon/icon_white_search.svg",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://challenges.cloudflare.com/turnstile/v0/b/d251aa49a8a3/api.js",
+        "method": "GET",
+        "type": "script"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "bergeron": {
+    "url": "https://www.voyagesbergeron.com/",
+    "analyzed_at": "2026-01-29T17:44:57.308376",
+    "homepage": {
+      "status": 200,
+      "title": "Voyages Bergeron #1 des agences de voyages en ligne",
+      "url": "https://www.voyagesbergeron.com/",
+      "has_redirect": false
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": false,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": [
+        {
+          "type": "date",
+          "selector": "input[placeholder*=\"Date\"]"
+        },
+        {
+          "type": "search_button",
+          "selector": "button[type=\"submit\"]"
+        }
+      ],
+      "has_date_input": true,
+      "has_search_button_input": true
+    },
+    "api_calls": [
+      {
+        "url": "https://www.google.com/recaptcha/api.js?onload=globalCaptchaOnload&render=explicit&hl=fr",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:500&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://fonts.googleapis.com/css?family=Lato:400,700,900&subset=latin-ext",
+        "method": "GET",
+        "type": "stylesheet"
+      },
+      {
+        "url": "https://analytics.google.com/g/collect?v=2&tid=G-7TW9PVPQ6C&gtm=45je61r1h1v9119145226za200zd9119145226&_p=1769726697938&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=33970155.1769726698&ul=en-gb&sr=1280x720&uaa=x86&uab=64&uafvl=Chromium%3B121.0.6167.57%7CNot%2520A(Brand%3B99.0.0.0&uamb=0&uam=&uap=Linux&uapv=6.8.0&uaw=0&frm=0&pscdl=noapi&_eu=AAAAAGA&_s=1&tag_exp=103116026~103200004~104527907~104528501~104573694~104684208~104684211~115495939~115938466~115938468~116185181~116185182~116988316~117041587&sid=1769726698&sct=1&seg=0&dl=https%3A%2F%2Fwww.voyagesbergeron.com%2F&dt=Voyages%20Bergeron%20%231%20des%20agences%20de%20voyages%20en%20ligne&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1&tfd=794",
+        "method": "POST",
+        "type": "fetch"
+      },
+      {
+        "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/924815279/?random=1769726698112&cv=11&fst=1769726698112&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45je61r1h1v9119145226za200zd9119145226xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~104527907~104528501~104573694~104684208~104684211~115495939~115938466~115938468~116185181~116185182~116988316~117041587&u_w=1280&u_h=720&url=https%3A%2F%2Fwww.voyagesbergeron.com%2F&frm=0&tiba=Voyages%20Bergeron%20%231%20des%20agences%20de%20voyages%20en%20ligne&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1988136132.1769726698&uaa=x86&uab=64&uafvl=Chromium%3B121.0.6167.57%7CNot%2520A(Brand%3B99.0.0.0&uamb=0&uam=&uap=Linux&uapv=6.8.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=4",
+        "method": "GET",
+        "type": "script"
+      },
+      {
+        "url": "https://shopping.voyagesbergeron.com/cgi-bin/query-epackages-plus.cgi?code_ag=ber&alias=ber&language=fr",
+        "method": "GET",
+        "type": "document"
+      },
+      {
+        "url": "https://shopping.voyagesbergeron.com/cgi-bin/hotels-top.cgi?code_ag=ber&alias=ber&language=fr",
+        "method": "GET",
+        "type": "document"
+      },
+      {
+        "url": "https://www.google.com/pagead/1p-user-list/924815279/?random=1769726698112&cv=11&fst=1769724000000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45je61r1h1v9119145226za200zd9119145226xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~104527907~104528501~104573694~104684208~104684211~115495939~115938466~115938468~116185181~116185182~116988316~117041587&u_w=1280&u_h=720&url=https%3A%2F%2Fwww.voyagesbergeron.com%2F&frm=0&tiba=Voyages%20Bergeron%20%231%20des%20agences%20de%20voyages%20en%20ligne&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1988136132.1769726698&uaa=x86&uab=64&uafvl=Chromium%3B121.0.6167.57%7CNot%2520A(Brand%3B99.0.0.0&uamb=0&uam=&uap=Linux&uapv=6.8.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQSfwDnonV5JKhxSRReVAMZKM8evf_0Jm-_7YPZmV4bAMaK9GFtX5qLpB_Gj1deNR_DsYVyG7-_aj32QX4hSfscJFwSNAeEVQSapWJUWI8bFwdD0MKUAaX3B5_0XbC4ZsVIyrY0GXmTBn4hfGpEuZcFt6puFEwZm2grdVwAgDIA15U&random=358306438&rmt_tld=0&ipr=y",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://www.google.ca/pagead/1p-user-list/924815279/?random=1769726698112&cv=11&fst=1769724000000&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45je61r1h1v9119145226za200zd9119145226xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=103116026~103200004~104527907~104528501~104573694~104684208~104684211~115495939~115938466~115938468~116185181~116185182~116988316~117041587&u_w=1280&u_h=720&url=https%3A%2F%2Fwww.voyagesbergeron.com%2F&frm=0&tiba=Voyages%20Bergeron%20%231%20des%20agences%20de%20voyages%20en%20ligne&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1988136132.1769726698&uaa=x86&uab=64&uafvl=Chromium%3B121.0.6167.57%7CNot%2520A(Brand%3B99.0.0.0&uamb=0&uam=&uap=Linux&uapv=6.8.0&uaw=0&data=event%3Dgtag.config&rfmt=3&fmt=3&is_vtc=1&cid=CAQSfwDnonV5JKhxSRReVAMZKM8evf_0Jm-_7YPZmV4bAMaK9GFtX5qLpB_Gj1deNR_DsYVyG7-_aj32QX4hSfscJFwSNAeEVQSapWJUWI8bFwdD0MKUAaX3B5_0XbC4ZsVIyrY0GXmTBn4hfGpEuZcFt6puFEwZm2grdVwAgDIA15U&random=358306438&rmt_tld=1&ipr=y",
+        "method": "GET",
+        "type": "image"
+      },
+      {
+        "url": "https://shopping.voyagesbergeron.com/cgi-bin/query-epackages-plus.cgi?code_ag=ber&alias=ber&language=fr",
+        "method": "GET",
+        "type": "document"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\ud83c\udfaf Found 1 JSON API calls - highly recommended approach",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "destination": {
+    "url": "https://www.voyagesdestination.com/",
+    "analyzed_at": "2026-01-29T17:45:04.745622",
+    "homepage": {
+      "status": 403,
+      "title": "Just a moment...",
+      "url": "https://www.voyagesdestination.com/",
+      "has_redirect": false
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": false,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": []
+    },
+    "api_calls": [
+      {
+        "url": "https://challenges.cloudflare.com/turnstile/v0/b/d251aa49a8a3/api.js?onload=cAdz2&render=explicit",
+        "method": "GET",
+        "type": "script"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "tripcentral": {
+    "url": "https://www.tripcentral.ca",
+    "analyzed_at": "2026-01-29T17:45:10.698723",
+    "homepage": {
+      "status": 403,
+      "title": "tripcentral.ca",
+      "url": "https://www.tripcentral.ca/",
+      "has_redirect": true
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": false,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": []
+    },
+    "api_calls": [],
+    "recommendations": [
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  },
+  "kayak": {
+    "url": "https://www.ca.kayak.com/",
+    "analyzed_at": "2026-01-29T17:45:16.305917",
+    "homepage": {
+      "status": 200,
+      "title": "Search Flights, Hotels & Rental Cars | KAYAK",
+      "url": "https://www.ca.kayak.com/",
+      "has_redirect": false
+    },
+    "search_analysis": {
+      "has_origin_input": false,
+      "has_destination_input": true,
+      "has_date_inputs": false,
+      "has_search_button": false,
+      "found_selectors": [
+        {
+          "type": "destination",
+          "selector": "input[placeholder*=\"To\"]"
+        },
+        {
+          "type": "search_button",
+          "selector": "button[type=\"submit\"]"
+        }
+      ],
+      "has_search_button_input": true
+    },
+    "api_calls": [
+      {
+        "url": "https://www.ca.kayak.com/i/api/iabtcf/v1/consent",
+        "method": "GET",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/a/api/smarty/nearby",
+        "method": "POST",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/mvm/p13n/flight/destinations?originAirport=YMQ&limit=5",
+        "method": "GET",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/i/api/trips/user/v1/currentUser",
+        "method": "GET",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/i/api/trips/trip/v1/allUpcomingSimplifiedTrips",
+        "method": "GET",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/i/api/account/dataSharing/v1/optOut",
+        "method": "GET",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/s/horizon/flights/common/GetFlightSearchHistoryAction",
+        "method": "POST",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/i/api/dynamicfrontdoor/v1/travelDeals",
+        "method": "POST",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/i/api/fullstory/v1/get",
+        "method": "GET",
+        "type": "fetch"
+      },
+      {
+        "url": "https://www.ca.kayak.com/i/api/session/refresh",
+        "method": "POST",
+        "type": "fetch"
+      }
+    ],
+    "recommendations": [
+      "\u2705 Site uses APIs - consider using API endpoints directly instead of HTML scraping",
+      "\ud83c\udfaf Found 10 JSON API calls - highly recommended approach",
+      "\u26a0\ufe0f No obvious search form - might use dynamic JavaScript or require specific URL structure"
+    ]
+  }
+}
